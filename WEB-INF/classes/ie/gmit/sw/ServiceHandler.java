@@ -1,12 +1,17 @@
 package ie.gmit.sw;
 
 import java.io.*;
+import java.util.ArrayList;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import ie.gmit.sw.StringCompService.RequestJob;
 
 public class ServiceHandler extends HttpServlet {
 	private String remoteHost = null;
 	private static long jobNumber = 0;
+	
 
 	public void init() throws ServletException {
 		ServletContext ctx = getServletContext();
@@ -22,6 +27,8 @@ public class ServiceHandler extends HttpServlet {
 		String s = req.getParameter("txtS");
 		String t = req.getParameter("txtT");
 		String taskNumber = req.getParameter("frmTaskNumber");
+		
+		
 
 
 		out.print("<html><head><title>Distributed Systems Assignment</title>");		
@@ -31,7 +38,11 @@ public class ServiceHandler extends HttpServlet {
 		if (taskNumber == null){
 			taskNumber = new String("T" + jobNumber);
 			jobNumber++;
+			
 			//Add job to in-queue
+			RequestJob rj = new RequestJob(algorithm, str1, str2, taskNumber);
+			out.print(rj);
+		
 		}else{
 			//Check out-queue for finished job
 		}
