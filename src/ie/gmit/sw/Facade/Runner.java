@@ -1,5 +1,7 @@
 package ie.gmit.sw.Facade;
 
+import ie.gmit.sw.StringCompService.AlgoFacade;
+
 public class Runner {
 
 	public static void main(String[] args) {

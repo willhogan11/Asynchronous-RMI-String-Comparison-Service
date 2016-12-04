@@ -2,16 +2,22 @@ package ie.gmit.sw;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import ie.gmit.sw.StringCompService.RequestJob;
+import ie.gmit.sw.StringCompService.Resultator;
 
 public class ServiceHandler extends HttpServlet {
+	
 	private String remoteHost = null;
 	private static long jobNumber = 0;
-	
+	private Queue<RequestJob> inQueue = new LinkedBlockingQueue<RequestJob>();
+	private Map<String, Resultator> outQueue = new HashMap<String, Resultator>();
 
 	public void init() throws ServletException {
 		ServletContext ctx = getServletContext();
@@ -40,8 +46,7 @@ public class ServiceHandler extends HttpServlet {
 			jobNumber++;
 			
 			//Add job to in-queue
-			RequestJob rj = new RequestJob(algorithm, str1, str2, taskNumber);
-			out.print(rj);
+			inQueue.offer(new RequestJob(algorithm, s, t, taskNumber));
 		
 		}else{
 			//Check out-queue for finished job

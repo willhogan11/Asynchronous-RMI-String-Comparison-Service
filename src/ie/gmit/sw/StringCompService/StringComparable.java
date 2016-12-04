@@ -1,4 +1,4 @@
-package ie.gmit.sw.Facade;
+package ie.gmit.sw.StringCompService;
 
 public interface StringComparable {
 
