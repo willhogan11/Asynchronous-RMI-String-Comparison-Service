@@ -1,8 +1,9 @@
 package ie.gmit.sw.StringCompService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface Resultator {
+public interface Resultator extends Remote {
 
 	public String getResult() throws RemoteException;
 	public void setResult(String result) throws RemoteException;
