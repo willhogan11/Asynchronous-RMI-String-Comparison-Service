@@ -6,7 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ResultatorImpl extends UnicastRemoteObject implements Resultator {
 	
 	private String result;
-	private boolean isProcessed;
+	private boolean isProcessed = false;
 
 	private static final long serialVersionUID = 1L;
 

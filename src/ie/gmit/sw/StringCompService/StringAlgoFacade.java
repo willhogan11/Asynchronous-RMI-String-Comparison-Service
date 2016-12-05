@@ -1,38 +1,33 @@
 package ie.gmit.sw.StringCompService;
 
-public class AlgoFacade {
+import ie.gmit.sw.algorithms.DamerauLevenshtein;
+import ie.gmit.sw.algorithms.HammingDistance;
+import ie.gmit.sw.algorithms.Levenshtein;
+
+public class StringAlgoFacade {
 	
 	private Levenshtein levenshtein;
 	private DamerauLevenshtein damerauLevenshtein;
 	private HammingDistance hammingDistance;
-
-	public AlgoFacade() {
+	
+	public StringAlgoFacade() {
 		levenshtein = new Levenshtein();
 		damerauLevenshtein = new DamerauLevenshtein();
 		hammingDistance = new HammingDistance();
 	}
 	
-	public boolean levenshteinAlgo(String s, String t) {
+	public int levenshteinAlgo(String s, String t) {
 		int result = levenshtein.distance(s, t);
-		if(result != 0)
-			return false;
-		else
-			return true;
+		return result;
 	}
 	
-	public boolean damerauLevenshteinAlgo(String s, String t){
+	public int damerauLevenshteinAlgo(String s, String t){
 		int result = damerauLevenshtein.distance(s, t);
-		if(result != 0)
-			return false;
-		else
-			return true;
+		return result;
 	}
 	
-	public boolean hammingDistanceAlgo(String s, String t){
+	public int hammingDistanceAlgo(String s, String t){
 		int result = hammingDistance.distance(s, t);
-		if(result != 0)
-			return false;
-		else
-			return true;
+		return result;
 	}
 }

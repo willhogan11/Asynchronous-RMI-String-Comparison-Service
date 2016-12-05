@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 
 import ie.gmit.sw.StringCompService.RequestJob;
 import ie.gmit.sw.StringCompService.Resultator;
+import ie.gmit.sw.StringCompService.ResultatorImpl;
 
 public class ServiceHandler extends HttpServlet {
 	
@@ -34,19 +35,22 @@ public class ServiceHandler extends HttpServlet {
 		String t = req.getParameter("txtT");
 		String taskNumber = req.getParameter("frmTaskNumber");
 		
-		
-
+		Resultator res = new ResultatorImpl(); // Create a new instance of Resultator that will be added to the outQueue. 
+			
 
 		out.print("<html><head><title>Distributed Systems Assignment</title>");		
 		out.print("</head>");		
 		out.print("<body>");
 		
 		if (taskNumber == null){
-			taskNumber = new String("T" + jobNumber);
-			jobNumber++;
+			taskNumber = new String("T" + jobNumber); // Create a TaskNumber, consisting of a T and the below incremented Job Number
+			jobNumber++; //  Increment Job Number
 			
 			//Add job to in-queue
+			
+			// Create a new RequestJob object from the request variables
 			inQueue.offer(new RequestJob(algorithm, s, t, taskNumber));
+			outQueue.put(taskNumber, res);
 		
 		}else{
 			//Check out-queue for finished job

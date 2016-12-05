@@ -1,12 +1,14 @@
 package ie.gmit.sw.Facade;
 
-import ie.gmit.sw.StringCompService.AlgoFacade;
+import java.rmi.RemoteException;
+
+import ie.gmit.sw.StringCompService.StringAlgoFacade;
 
 public class Runner {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RemoteException {
 		
-		AlgoFacade algoFacadeMaker = new AlgoFacade();
+		StringAlgoFacade algoFacadeMaker = new StringAlgoFacade();
 		
 		System.out.println(algoFacadeMaker.levenshteinAlgo("willi", "will")); 
 		System.out.println(algoFacadeMaker.damerauLevenshteinAlgo("will", "will"));

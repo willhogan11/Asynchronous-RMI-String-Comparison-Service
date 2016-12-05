@@ -1,4 +1,6 @@
-package ie.gmit.sw.StringCompService;
+package ie.gmit.sw.algorithms;
+
+import ie.gmit.sw.StringCompService.StringComparable;
 
 public class DamerauLevenshtein implements StringComparable {
 
