@@ -29,7 +29,7 @@ public class ServiceHandler extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		
-		//Initialise some request varuables with the submitted form info. These are local to this method and thread safe...
+		//Initialise some request variables with the submitted form info. These are local to this method and thread safe...
 		String algorithm = req.getParameter("cmbAlgorithm");
 		String s = req.getParameter("txtS");
 		String t = req.getParameter("txtT");
@@ -48,8 +48,10 @@ public class ServiceHandler extends HttpServlet {
 			
 			//Add job to in-queue
 			
-			// Create a new RequestJob object from the request variables
+			// Create a new RequestJob object from the request variables and offer to the in queue
 			inQueue.offer(new RequestJob(algorithm, s, t, taskNumber));
+			
+			// Put the TaskNumber and the result object Id into the out queue
 			outQueue.put(taskNumber, res);
 		
 		}else{
@@ -96,7 +98,7 @@ public class ServiceHandler extends HttpServlet {
 		out.print("</script>");
 				
 		//You can use this method to implement the functionality of an RMI client
-		
+		out.print("<h1> + " + outQueue + " + </h1>");
 		//
 	}
 
