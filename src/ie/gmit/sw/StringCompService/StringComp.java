@@ -8,7 +8,7 @@ public class StringComp implements Runnable {
 	private String s;
 	private String t;
 	private Resultator res;
-	// private static final int THREAD_SLEEP = 5000;
+	private static final int THREAD_SLEEP = 5000;
 	
 	
 	public StringComp(String algo, String s, String t, Resultator res) {
@@ -19,8 +19,7 @@ public class StringComp implements Runnable {
 		this.res = res;
 	}
 	
-	
-
+	// For Testing Purposes 
 	@Override
 	public String toString() {
 		return "StringComp [algo=" + algo + ", s=" + s + ", t=" + t + ", res=" + res + "]";
@@ -39,7 +38,7 @@ public class StringComp implements Runnable {
 			if(algo.equals("HAMMING_DISTANCE")) {
 				
 				System.out.println("Processing...");
-				// Thread.sleep(THREAD_SLEEP);
+				Thread.sleep(THREAD_SLEEP);
 				distance = saf.hammingDistanceAlgo(s, t);
 				
 				res.setResult("Result for Hamming Distance Comparison is : " + distance);
@@ -52,7 +51,7 @@ public class StringComp implements Runnable {
 			else if(algo.equals("DAMERAU_LEVENSHTEIN_DISTANCE")) {
 				
 				System.out.println("Processing...");
-				// Thread.sleep(THREAD_SLEEP);
+				Thread.sleep(THREAD_SLEEP);
 				distance = saf.hammingDistanceAlgo(s, t);
 				
 				res.setResult("Result for Damerau Levenshtein Distance Comparison is : " + distance);
@@ -65,7 +64,7 @@ public class StringComp implements Runnable {
 			else if(algo.equals("LEVENSHTEIN_DISTANCE")) {
 				
 				System.out.println("Processing...");
-				// Thread.sleep(THREAD_SLEEP);
+				Thread.sleep(THREAD_SLEEP);
 				distance = saf.hammingDistanceAlgo(s, t);
 				
 				res.setResult("Result for Levenshtein Distance Comparison is : " + distance);
@@ -77,6 +76,8 @@ public class StringComp implements Runnable {
 			}
 			
 		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
