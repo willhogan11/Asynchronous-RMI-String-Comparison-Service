@@ -10,6 +10,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import ie.gmit.sw.StringCompService.RequestJob;
+import ie.gmit.sw.StringCompService.RequestJobProcess;
+import ie.gmit.sw.StringCompService.RequestJobable;
 import ie.gmit.sw.StringCompService.Resultator;
 import ie.gmit.sw.StringCompService.ResultatorImpl;
 
@@ -17,8 +19,8 @@ public class ServiceHandler extends HttpServlet {
 	
 	private String remoteHost = null;
 	private static long jobNumber = 0;
-	private Queue<RequestJob> inQueue = new LinkedBlockingQueue<RequestJob>();
-	private Map<String, Resultator> outQueue = new HashMap<String, Resultator>();
+	private RequestJob request;
+	
 
 	public void init() throws ServletException {
 		ServletContext ctx = getServletContext();
@@ -48,11 +50,21 @@ public class ServiceHandler extends HttpServlet {
 			
 			//Add job to in-queue
 			
+			request = new RequestJob();
+			
+			request.setAlgorithm(algorithm);
+			request.setStr1(str1);
+			request.setStr2(str2);
+			request.setTaskNumber(taskNumber);
+			
+			RequestJobProcess requestJobProcess = new RequestJobProcess();
+			requestJobProcess.addRequest(request);
+			
 			// Create a new RequestJob object from the request variables and offer to the in queue
-			inQueue.offer(new RequestJob(algorithm, s, t, taskNumber));
+			// inQueue.offer(new RequestJob(algorithm, s, t, taskNumber));
 			
 			// Put the TaskNumber and the result object Id into the out queue
-			outQueue.put(taskNumber, res);
+			// outQueue.put(taskNumber, res);
 		
 		}else{
 			//Check out-queue for finished job

@@ -4,7 +4,7 @@ import ie.gmit.sw.algorithms.DamerauLevenshtein;
 import ie.gmit.sw.algorithms.HammingDistance;
 import ie.gmit.sw.algorithms.Levenshtein;
 
-public class StringAlgoFacade {
+public class StringAlgoFacade implements Algorithmable {
 	
 	private Levenshtein levenshtein;
 	private DamerauLevenshtein damerauLevenshtein;

@@ -35,7 +35,7 @@ public class ClientRunner {
 			jobNumber++; //  Increment Job Number
 			
 			// Create a new RequestJob object from the request variables and offer to the in queue
-			inQueue.offer(new RequestJob(algo, s, t, taskNumber));
+			// inQueue.offer(new RequestJob(algo, s, t, taskNumber));
 			
 			// Put the TaskNumber and the result object Id into the out queue
 			outQueue.put(taskNumber, res);

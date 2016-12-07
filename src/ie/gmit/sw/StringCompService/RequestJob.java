@@ -7,13 +7,13 @@ public class RequestJob implements RequestJobable {
 	private String str2;
 	private String taskNumber;
 	
-	public RequestJob(String algorithm, String str1, String str2, String taskNumber) {
-		super();
-		this.algorithm = algorithm;
-		this.str1 = str1;
-		this.str2 = str2;
-		this.taskNumber = taskNumber;
-	}
+//	public RequestJob(String algorithm, String str1, String str2, String taskNumber) {
+//		super();
+//		this.algorithm = algorithm;
+//		this.str1 = str1;
+//		this.str2 = str2;
+//		this.taskNumber = taskNumber;
+//	}
 	
 	public String getAlgorithm() {
 		return algorithm;
