@@ -6,7 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ResultatorImpl extends UnicastRemoteObject implements Resultator {
 	
 	private String result;
-	private boolean isProcessed = false;
+	private boolean isProcessed;
 
 	private static final long serialVersionUID = 1L;
 
@@ -15,7 +15,7 @@ public class ResultatorImpl extends UnicastRemoteObject implements Resultator {
 	}
 
 	public String getResult() throws RemoteException {
-		return result;
+		return this.result;
 	}
 
 	public void setResult(String result) throws RemoteException {
@@ -27,6 +27,6 @@ public class ResultatorImpl extends UnicastRemoteObject implements Resultator {
 	}
 
 	public void setProcessed() throws RemoteException {
-		this.isProcessed = true;
+		this.isProcessed = false;
 	}
 }

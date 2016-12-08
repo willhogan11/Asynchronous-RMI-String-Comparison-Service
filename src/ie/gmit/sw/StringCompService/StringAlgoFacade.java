@@ -16,18 +16,27 @@ public class StringAlgoFacade implements Algorithmable {
 		hammingDistance = new HammingDistance();
 	}
 	
-	public int levenshteinAlgo(String s, String t) {
+	public boolean levenshteinAlgo(String s, String t) {
 		int result = levenshtein.distance(s, t);
-		return result;
+		if(result != 0)
+			return false;
+		else
+			return true;
 	}
 	
-	public int damerauLevenshteinAlgo(String s, String t){
+	public boolean damerauLevenshteinAlgo(String s, String t){
 		int result = damerauLevenshtein.distance(s, t);
-		return result;
+		if(result != 0)
+			return false;
+		else
+			return true;
 	}
 	
-	public int hammingDistanceAlgo(String s, String t){
+	public boolean hammingDistanceAlgo(String s, String t){
 		int result = hammingDistance.distance(s, t);
-		return result;
+		if(result != 0)
+			return false;
+		else
+			return true;
 	}
 }
