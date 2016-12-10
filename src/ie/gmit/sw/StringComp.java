@@ -18,8 +18,7 @@ public class StringComp {
 		this.res = res;
 		
 		compResult();
-	}
-	
+	}	
 	
 	public void compResult() throws InterruptedException {
 		
@@ -29,23 +28,25 @@ public class StringComp {
 		
 		try {
 			
-			if(algo.equals("HAMMING_DISTANCE")) {
-				
-				distance = saf.hammingDistanceAlgo(s, t);
-				res.setResult("Result for Hamming Distance Comparison is : " + distance);
-				res.setProcessed();
-			}
-			else if(algo.equals("DAMERAU_LEVENSHTEIN_DISTANCE")) {
-				
-				distance = saf.hammingDistanceAlgo(s, t);
-				res.setResult("Result for Damerau Levenshtein Distance Comparison is : " + distance);
-				res.setProcessed();
-			}
-			else if(algo.equals("LEVENSHTEIN_DISTANCE")) {
-				
-				distance = saf.hammingDistanceAlgo(s, t);
-				res.setResult("Result for Levenshtein Distance Comparison is : " + distance);
-				res.setProcessed();
+			switch (algo) {
+			
+				case ("HAMMING_DISTANCE"): 
+					distance = saf.hammingDistanceAlgo(s, t);
+					res.setResult("Result for Hamming Distance Comparison is : " + distance);
+					res.setProcessed();
+					break;
+					
+				case ("DAMERAU_LEVENSHTEIN_DISTANCE"):
+					distance = saf.hammingDistanceAlgo(s, t);
+					res.setResult("Result for Damerau Levenshtein Distance Comparison is : " + distance);
+					res.setProcessed();
+					break;
+					
+				case ("LEVENSHTEIN_DISTANCE"):
+					distance = saf.hammingDistanceAlgo(s, t);
+					res.setResult("Result for Levenshtein Distance Comparison is : " + distance);
+					res.setProcessed();
+					break;
 			}
 			
 		} catch (RemoteException e) {
