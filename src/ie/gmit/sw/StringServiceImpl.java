@@ -4,26 +4,21 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class StringServiceImpl extends UnicastRemoteObject implements StringService {
 
 	private static final long serialVersionUID = 1L;
 	private static final int NUM_OF_THREADS = 100;
     private ExecutorService executorService;
+    private Resultator res;
     
-    // private Resultator res;	
-	
 	public StringServiceImpl() throws RemoteException {
 		executorService = Executors.newFixedThreadPool(NUM_OF_THREADS);
 	}
 	
-	
 	public Resultator compare(String s, String t, String algo) throws RemoteException, InterruptedException {
-		
-		// Create a Singleton instance of the Resultator class using a Factory pattern. 
-		ResultatorFactory rf = ResultatorFactory.getInstance();
-		Resultator res = rf.getResultatorImpl();
+
+		res = new ResultatorImpl();
 		
 		executorService.submit(new Runnable() {
 			

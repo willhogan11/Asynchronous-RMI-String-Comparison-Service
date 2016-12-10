@@ -1,7 +1,7 @@
 package ie.gmit.sw;
 
 
-public class StringAlgoFacade implements Algorithmable {
+public class StringAlgoFacade {
 	
 	private Levenshtein levenshtein;
 	private DamerauLevenshtein damerauLevenshtein;

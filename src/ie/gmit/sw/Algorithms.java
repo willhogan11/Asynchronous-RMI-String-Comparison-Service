@@ -1,8 +1,0 @@
-package ie.gmit.sw;
-
-public enum Algorithms {
-	
-	DAMERAU_LEVENSHTEIN_DISTANCE,
-	HAMMING_DISTANCE,
-	LEVENSHTEIN_DISTANCE
-}

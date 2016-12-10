@@ -10,7 +10,7 @@ public class StringServiceServant {
 		//Create an instance of the class StringService.
 		StringService strService = new StringServiceImpl();
 		
-		//Start the RMI regstry on port 1099
+		//Start the RMI registry on port 1099
 		LocateRegistry.createRegistry(1099);
 		
 		//Bind our remote object to the registry with the human-readable name "StringCompareService"
