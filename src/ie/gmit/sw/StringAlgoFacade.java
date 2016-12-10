@@ -8,6 +8,7 @@ public class StringAlgoFacade implements Algorithmable {
 	private HammingDistance hammingDistance;
 	
 	public StringAlgoFacade() {
+		
 		levenshtein = new Levenshtein();
 		damerauLevenshtein = new DamerauLevenshtein();
 		hammingDistance = new HammingDistance();

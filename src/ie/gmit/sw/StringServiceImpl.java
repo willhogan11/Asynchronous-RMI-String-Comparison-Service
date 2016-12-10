@@ -12,7 +12,7 @@ public class StringServiceImpl extends UnicastRemoteObject implements StringServ
 	private static final int NUM_OF_THREADS = 100;
     private ExecutorService executorService;
     
-    private Resultator res;	
+    // private Resultator res;	
 	
 	public StringServiceImpl() throws RemoteException {
 		executorService = Executors.newFixedThreadPool(NUM_OF_THREADS);
@@ -21,8 +21,9 @@ public class StringServiceImpl extends UnicastRemoteObject implements StringServ
 	
 	public Resultator compare(String s, String t, String algo) throws RemoteException, InterruptedException {
 		
-		//Create an Resultator object to hold the returned string coomparison result
-		res = new ResultatorImpl();
+		// Create a Singleton instance of the Resultator class using a Factory pattern. 
+		ResultatorFactory rf = ResultatorFactory.getInstance();
+		Resultator res = rf.getResultatorImpl();
 		
 		executorService.submit(new Runnable() {
 			
