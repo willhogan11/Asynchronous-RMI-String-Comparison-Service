@@ -15,7 +15,7 @@ public class StringServiceImpl extends UnicastRemoteObject implements StringServ
     private Resultator res;	
 	
 	public StringServiceImpl() throws RemoteException {
-		// executorService = Executors.newFixedThreadPool(NUM_OF_THREADS);
+		executorService = Executors.newFixedThreadPool(NUM_OF_THREADS);
 	}
 	
 	
@@ -24,10 +24,22 @@ public class StringServiceImpl extends UnicastRemoteObject implements StringServ
 		//Create an Resultator object to hold the returned string coomparison result
 		res = new ResultatorImpl();
 		
-		StringComp sc = new StringComp(algo, s, t, res);
-				
-		System.out.println("\nResult for Compare method : " + res.getResult());	
-		
+		executorService.submit(new Runnable() {
+			
+			public void run() {
+				try {
+					
+					StringComp sc = new StringComp(algo, s, t, res);
+					System.out.println("\nResult for Compare method : " + res.getResult());
+					
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}	
+			}
+		});
+			
 		return res;
 	}	
 }

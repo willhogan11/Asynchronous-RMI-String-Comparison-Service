@@ -17,9 +17,9 @@ public class RequestJobProcess {
 
 	private static final int NUMBER_OF_THREADS = 1;
 	private static Queue<RequestJob> inQueue = new LinkedBlockingQueue<RequestJob>();
-	private static Map<String, Resultator> outQueue = new ConcurrentHashMap<String, Resultator>();
 	private ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-
+	private Resultator res;
+	
 	
 	// Constructor
 	public RequestJobProcess() throws MalformedURLException, NotBoundException, RemoteException  {
@@ -36,9 +36,9 @@ public class RequestJobProcess {
 			
 			Resultator res = strServ.compare(request.getStr1(), request.getStr2(), request.getAlgorithm());
 			
-			outQueue.put(request.getTaskNumber(), res);
+			// outQueue.put(request.getTaskNumber(), res);
 			
-			System.out.println("OutQueue details : " + outQueue);
+			// System.out.println("OutQueue details : " + outQueue);
 			
 			System.out.println("Details of empty resultator object : " + res);
 			

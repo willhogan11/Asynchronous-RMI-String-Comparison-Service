@@ -21,48 +21,31 @@ public class StringComp {
 	}
 	
 	
-	public void compResult() {
+	public void compResult() throws InterruptedException {
 		
-		int distance;
+		int distance; // Could change this to a boolean and display if equal as a second option
+		
 		StringAlgoFacade saf = new StringAlgoFacade();
 		
 		try {
 			
 			if(algo.equals("HAMMING_DISTANCE")) {
 				
-				System.out.println("Processing...");
 				distance = saf.hammingDistanceAlgo(s, t);
-				
 				res.setResult("Result for Hamming Distance Comparison is : " + distance);
 				res.setProcessed();
-				
-				// Testing
-				System.out.println("Result Is: " + res.getResult());
-				System.out.println("Is Processed? " + res.isProcessed());
 			}
 			else if(algo.equals("DAMERAU_LEVENSHTEIN_DISTANCE")) {
 				
-				System.out.println("Processing...");
 				distance = saf.hammingDistanceAlgo(s, t);
-				
 				res.setResult("Result for Damerau Levenshtein Distance Comparison is : " + distance);
 				res.setProcessed();
-				
-				// Testing
-				System.out.println("Result Is: " + res.getResult());
-				System.out.println("Is Processed? " + res.isProcessed());
 			}
 			else if(algo.equals("LEVENSHTEIN_DISTANCE")) {
 				
-				System.out.println("Processing...");
 				distance = saf.hammingDistanceAlgo(s, t);
-				
 				res.setResult("Result for Levenshtein Distance Comparison is : " + distance);
 				res.setProcessed();
-				
-				// Testing
-				System.out.println("Result Is: " + res.getResult());
-				System.out.println("Is Processed? " + res.isProcessed());
 			}
 			
 		} catch (RemoteException e) {
