@@ -37,13 +37,12 @@ public class ServiceHandler extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		
-		//Initialise some request varuables with the submitted form info. These are local to this method and thread safe...
+		/** Initialise some request variables with the submitted form info. These are local to this method and thread safe... */
 		String algorithm = req.getParameter("cmbAlgorithm");
 		String s = req.getParameter("txtS");
 		String t = req.getParameter("txtT");
 		String taskNumber = req.getParameter("frmTaskNumber");
 		
-		boolean isProcessed = false;
 		String finalResult = null;
 
 
@@ -78,11 +77,11 @@ public class ServiceHandler extends HttpServlet {
 							StringService strServ = (StringService) Naming.lookup("rmi://localhost:1099/StringCompareService");
 							System.out.println(strServ); 
 							
+							inQueue.poll(); // Remove the requestJob from the inQueue
+							
 							res = strServ.compare(requestJob.getStr1(), requestJob.getStr2(), requestJob.getAlgorithm());
 							
 							outQueue.put(requestJob.getTaskNumber(), res); 
-							
-							System.out.println("Testing outQueue print : " + outQueue);
 
 							if(res.isProcessed() == true) {
 								outQueue.put(requestJob.getTaskNumber(), res);
@@ -104,8 +103,9 @@ public class ServiceHandler extends HttpServlet {
 			
 		} else {
 			
-			//Check out-queue for finished job
+			// Check out-queue for finished job
 			if(res.isProcessed() == true) {
+				
 				finalResult = res.getResult();
 			}
 		}
@@ -121,10 +121,11 @@ public class ServiceHandler extends HttpServlet {
 		out.print("<br>String <i>t</i> : " + t);
 		
 		out.print("<br><h1>RESULT STATUS:</h1>");
+		
 		if(finalResult == null) { 
-			out.print("Result Pending....");
+			out.print("Result for Job# " + taskNumber + " Pending....");
 		}else{
-			out.print(finalResult);
+			out.print(finalResult + "\n. Job# " + taskNumber +  " is complete.");
 		}
 		out.print("</b></font>");
 		
@@ -140,7 +141,7 @@ public class ServiceHandler extends HttpServlet {
 		
 		out.print("<script>");
 	
-		
+		/** If the result has not yet been returned, keep refreshing the page */
 		if (finalResult == null) {
 			out.print("var wait=setTimeout(\"document.frmRequestDetails.submit();\", 10000);");
 		}
