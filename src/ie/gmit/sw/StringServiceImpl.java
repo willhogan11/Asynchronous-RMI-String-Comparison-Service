@@ -20,6 +20,8 @@ public class StringServiceImpl extends UnicastRemoteObject implements StringServ
 
 		res = new ResultatorImpl();
 		
+		Thread.sleep(5000);
+		
 		executorService.submit(new Runnable() {
 			
 			public void run() {

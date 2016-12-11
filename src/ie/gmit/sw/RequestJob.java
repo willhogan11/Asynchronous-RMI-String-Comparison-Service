@@ -1,5 +1,10 @@
 package ie.gmit.sw;
 
+/**
+ * @author Will Hogan
+ * This class contains the getter and setters methods that work 
+ * in conjunction with the request parameters variables that are coming from the Requester side. 
+ */
 public class RequestJob implements RequestJobable {
 	
 	private String algorithm;
@@ -40,6 +45,7 @@ public class RequestJob implements RequestJobable {
 	}
 
 	@Override
+	// For testing purposes...
 	public String toString() {
 		return "RequestJob [algorithm=" + algorithm + ", str1=" + str1 + ", str2=" + str2 + ", taskNumber=" + taskNumber + "]";
 	}

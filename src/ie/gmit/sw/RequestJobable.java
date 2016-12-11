@@ -1,5 +1,11 @@
 package ie.gmit.sw;
 
+
+/**
+ * @author Will Hogan
+ * This interface is an abstraction of the RequestJob class, 
+ * which contain getters and setters for the Request variable parameters
+ */
 public interface RequestJobable {
 
 	public String getAlgorithm();
