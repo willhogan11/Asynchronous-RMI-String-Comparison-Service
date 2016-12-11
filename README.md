@@ -35,7 +35,22 @@ Please read the comments in the java file _StringAlgoFacade_ for a detailed brea
 
 ---
 
+# GitHub Project Management
+I extensively used github services to manage my Commits, Branches, Issues and Milestones (All issues and milestones are closed now, but they can still be viewed). 
+
+---
+
 # Execution Instructions
+To run this application, you'll need a Web Application Archive (War) and the String-Service java application archive (Jar). Both of which are located within the _**Deployment**_ folder in this repository. You'll also need to download and setup the latest version Apache Tomcat as your webserver. Here's the link [http://tomcat.apache.org/](http://tomcat.apache.org/). 
+
+Once you have setup tomcat, you'll need to put the _**comparator.war**_ file in the webapps folder, situated within the apache tomcat directory. It should unbundle the war file for you, but if you are having issues with this, simply rename the file extention to .zip,  you'll then be able to extract everything you need. using the command line, navigate to the bin directory and type ```startup.bat```, which starts tomcat. 
+
+After that, you'll need to start the RMI server. 
+Run the jar file by navigating to the directory you have downloaded the _**string-service.jar**_ file to and type the following command into the command line. ```java –cp ./string-service.jar ie.gmit.sw.StringServiceServant```. This will start the RMI server.
+
+**Note the port number i used for the RMI part of the application is 1099, if you have something else running on that port, you'll encounter issues.**
+
+At this point, go to your browser and type the following ```localhost/comparator```. The port number will depend on what you have setup yourself. i used port 8080. 
 
 ---
 
